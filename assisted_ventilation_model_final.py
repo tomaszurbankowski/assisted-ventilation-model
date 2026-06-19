@@ -330,7 +330,7 @@ def run_single_scenario(
     return metrics
 
 
-def run_parameter_sweep() -> pd.DataFrame:
+def run_parameter_sweep(dt: float = 0.001) -> pd.DataFrame:
     phenotypes: List[PhenotypeName] = [
         "compliance_dominant",
         "resistance_dominant",
@@ -355,7 +355,7 @@ def run_parameter_sweep() -> pd.DataFrame:
                             peep=5.0,
                             rr=18.0,
                             ti=1.0,
-                            dt=0.001,
+                            dt=dt,
                         )
                     )
     return pd.DataFrame(rows)
@@ -400,6 +400,42 @@ def matched_pairs(
                     }
                 )
     return pd.DataFrame(rows)
+
+
+def time_step_stability_analysis(
+    dt_reference: float = 0.001,
+    dt_test: float = 0.0005,
+) -> Dict[str, float]:
+    """Repeat the full parameter sweep with a smaller time step.
+
+    The rows in the reference and refined sweeps are generated in the same
+    deterministic order, which allows scenario-by-scenario comparison of
+    total modeled mechanical power and energy inequality index (EII).
+    """
+    reference = run_parameter_sweep(dt=dt_reference).reset_index(drop=True)
+    refined = run_parameter_sweep(dt=dt_test).reset_index(drop=True)
+
+    if len(reference) != len(refined):
+        raise RuntimeError("Reference and refined sweeps have different lengths.")
+
+    scenario_columns = ["phenotype", "PS_cmH2O", "Pmus_peak_cmH2O", "Tmus_s"]
+    if not reference[scenario_columns].equals(refined[scenario_columns]):
+        raise RuntimeError("Reference and refined sweeps are not aligned scenario-by-scenario.")
+
+    mp_relative_difference = (
+        (refined["MP_tot_Jmin"] - reference["MP_tot_Jmin"]).abs()
+        / reference["MP_tot_Jmin"].replace(0.0, np.nan)
+    )
+    eii_absolute_difference = (refined["EII"] - reference["EII"]).abs()
+
+    return {
+        "n_scenarios": float(len(reference)),
+        "dt_reference_s": dt_reference,
+        "dt_test_s": dt_test,
+        "max_relative_MP_tot_difference_percent": float(100.0 * mp_relative_difference.max()),
+        "median_relative_MP_tot_difference_percent": float(100.0 * mp_relative_difference.median()),
+        "max_absolute_EII_difference": float(eii_absolute_difference.max()),
+    }
 
 
 def internal_validation(dt_reference: float = 0.001, dt_test: float = 0.0005) -> pd.DataFrame:
@@ -450,26 +486,29 @@ def internal_validation(dt_reference: float = 0.001, dt_test: float = 0.0005) ->
         }
     )
 
-    coarse = run_single_scenario(
-        phenotype="mixed",
-        pressure_support=10.0,
-        pmus_peak=6.0,
-        effort_duration=1.0,
-        dt=dt_reference,
+    stability = time_step_stability_analysis(
+        dt_reference=dt_reference,
+        dt_test=dt_test,
     )
-    fine = run_single_scenario(
-        phenotype="mixed",
-        pressure_support=10.0,
-        pmus_peak=6.0,
-        effort_duration=1.0,
-        dt=dt_test,
-    )
-    rel_mp_diff = abs(fine["MP_tot_Jmin"] - coarse["MP_tot_Jmin"]) / coarse["MP_tot_Jmin"]
     checks.append(
         {
-            "test": "Numerical stability across time step refinement",
-            "passed": rel_mp_diff < 0.01,
-            "value": rel_mp_diff,
+            "test": "Full parameter sweep: maximum relative MP_tot difference (%) after time-step refinement",
+            "passed": stability["max_relative_MP_tot_difference_percent"] < 0.1,
+            "value": stability["max_relative_MP_tot_difference_percent"],
+        }
+    )
+    checks.append(
+        {
+            "test": "Full parameter sweep: median relative MP_tot difference (%) after time-step refinement",
+            "passed": stability["median_relative_MP_tot_difference_percent"] < 0.1,
+            "value": stability["median_relative_MP_tot_difference_percent"],
+        }
+    )
+    checks.append(
+        {
+            "test": "Full parameter sweep: maximum absolute EII difference after time-step refinement",
+            "passed": stability["max_absolute_EII_difference"] < 0.001,
+            "value": stability["max_absolute_EII_difference"],
         }
     )
 
@@ -498,10 +537,15 @@ if __name__ == "__main__":
     print(f"Matched pairs by MP_tot: {len(matched_total)}")
 
     validation = internal_validation()
+    stability = time_step_stability_analysis()
+    stability_df = pd.DataFrame([stability])
     print("\nInternal validation:")
     print(validation)
+    print("\nFull-sweep time-step stability:")
+    print(stability_df)
 
     df.to_csv("assisted_ventilation_effort_sweep_final.csv", index=False)
     matched_vent.to_csv("assisted_ventilation_mpvent_matched_pairs_final.csv", index=False)
     matched_total.to_csv("assisted_ventilation_mptot_matched_pairs_final.csv", index=False)
     validation.to_csv("assisted_ventilation_internal_validation.csv", index=False)
+    stability_df.to_csv("assisted_ventilation_time_step_stability.csv", index=False)
