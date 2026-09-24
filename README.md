@@ -70,4 +70,23 @@ This is a simplified physiological model intended for conceptual and mechanistic
 - no hysteresis,  
 - no trigger or cycling algorithm,  
 - no auto-PEEP,  
-- no anatomical regional modeling beyond two parallel compartments.  
+- no anatomical regional modeling beyond two parallel compartments.
+  
+## Supplementary sensitivity analysis
+
+The independent compliance-resistance sensitivity analysis supporting Additional file 1
+is documented in [supplementary/sensitivity/README.md](supplementary/sensitivity/README.md).
+The deposited outputs cover 221 mechanical configurations and 45 loading-input
+combinations (9,945 parameter combinations per time step), at dt = 0.001 and 0.0005 s.
+
+Run the supplementary driver from the repository root:
+
+```bash
+python -m pip install -r supplementary/sensitivity/requirements.txt
+python run_R1C6_sensitivity.py --output-dir reproduced_sensitivity --workers 4
+```
+
+The primary model implementation and primary 180-scenario analysis are retained.
+Limited effort-related variation in EII in the four primary configurations does not
+generalize across the broader sensitivity grid. See Additional file 1 and the
+supplementary README for numerical conventions, source provenance, and interpretation.
