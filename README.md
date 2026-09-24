@@ -9,7 +9,9 @@ This repository contains the Python code used for an in-silico two-compartment m
 - `generate_figure2_representative_waveforms.py` – generates representative pressure, flow, and volume waveforms.  
 - `generate_figure3_parameter_sweep_heatmaps.py` – generates parameter-sweep heatmaps.  
 - `generate_figure4_hidden_burden_scatter.py` – generates scatter plots comparing ventilator and total mechanical power.  
-- `generate_figure5_matched_pair_summary.py` – generates matched-pair summary plots.  
+- `generate_figure5_matched_pair_summary.py` – generates matched-pair summary plots.
+- `run_R1C6_sensitivity.py` – supplementary sensitivity analysis with independent variation of compartment-2 compliance and resistance.
+- `supplementary/sensitivity/` – supplementary methods, complete sensitivity-analysis outputs, numerical checks, and reproduction instructions. 
 
 ## Model overview
 The respiratory system is represented as two parallel linear resistance–compliance compartments. Airway pressure above PEEP and patient inspiratory effort are combined into a net distending pressure:  
