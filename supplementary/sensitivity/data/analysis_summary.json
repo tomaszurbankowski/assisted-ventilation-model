@@ -1,0 +1,96 @@
+{
+  "n_C2_levels": 17,
+  "n_R2_levels": 13,
+  "n_mechanical_configurations": 221,
+  "n_input_combinations_per_configuration": 45,
+  "n_supplementary_conditions_per_dt": 9945,
+  "n_distinct_pressure_inputs_per_configuration": 39,
+  "C2_range_L_per_cmH2O": [
+    0.02,
+    0.1
+  ],
+  "C2_step": 0.005,
+  "R2_range_cmH2O_s_per_L": [
+    4.0,
+    16.0
+  ],
+  "R2_step": 1.0,
+  "tau2_range_s": [
+    0.08,
+    1.6
+  ],
+  "MPtot_range_Jmin": [
+    2.5277086923816143,
+    130.20932100954556
+  ],
+  "EF1_range": [
+    0.2889064094536669,
+    0.767181559534585
+  ],
+  "EII_range": [
+    0.0,
+    0.5343631190691697
+  ],
+  "max_EII_range_across_loading_inputs": {
+    "C2_L_cmH2O": 0.02,
+    "R2_cmH2O_s_L": 4.0,
+    "MPtot_min": 2.5622183284318725,
+    "MPtot_max": 55.078519574035425,
+    "EF1_min": 0.6576875629820929,
+    "EF1_max": 0.767181559534585,
+    "EII_min": 0.31537512596418554,
+    "EII_max": 0.5343631190691697,
+    "EII_range": 0.21898799310498412,
+    "EF1_range": 0.10949399655249215,
+    "preference_reversal_across_loading_inputs": false
+  },
+  "max_EF1_range_across_loading_inputs": {
+    "C2_L_cmH2O": 0.02,
+    "R2_cmH2O_s_L": 4.0,
+    "MPtot_min": 2.5622183284318725,
+    "MPtot_max": 55.078519574035425,
+    "EF1_min": 0.6576875629820929,
+    "EF1_max": 0.767181559534585,
+    "EII_min": 0.31537512596418554,
+    "EII_max": 0.5343631190691697,
+    "EII_range": 0.21898799310498412,
+    "EF1_range": 0.10949399655249215,
+    "preference_reversal_across_loading_inputs": false
+  },
+  "max_EII_range_across_amplitude_at_fixed_PS_Tmus": {
+    "C2_L_cmH2O": 0.02,
+    "R2_cmH2O_s_L": 4.0,
+    "PS_cmH2O": 5.0,
+    "Tmus_s": 1.0,
+    "EII_min": 0.31537512596418554,
+    "EII_max": 0.5343631190691697,
+    "EF1_min": 0.6576875629820929,
+    "EF1_max": 0.767181559534585,
+    "EII_range": 0.21898799310498412,
+    "EF1_range": 0.10949399655249215
+  },
+  "max_EF1_range_across_amplitude_at_fixed_PS_Tmus": {
+    "C2_L_cmH2O": 0.02,
+    "R2_cmH2O_s_L": 4.0,
+    "PS_cmH2O": 5.0,
+    "Tmus_s": 1.0,
+    "EII_min": 0.31537512596418554,
+    "EII_max": 0.5343631190691697,
+    "EF1_min": 0.6576875629820929,
+    "EF1_max": 0.767181559534585,
+    "EII_range": 0.21898799310498412,
+    "EF1_range": 0.10949399655249215
+  },
+  "n_mechanical_configurations_with_EF1_crossing_0p5_across_loading_inputs": 19,
+  "refinement_max_relative_MPtot_difference_percent": 0.15643677702324,
+  "refinement_median_relative_MPtot_difference_percent": 0.037085990190244694,
+  "refinement_max_absolute_EII_difference": 0.001202190740721254,
+  "refinement_max_absolute_EF1_difference": 0.0006010953703605715,
+  "max_energy_balance_error_J": 1.7763568394002505e-15,
+  "max_partition_balance_error": 4.440892098500626e-16,
+  "source_model_sha256": "505c9d2b9ea651c67ba24655fbb8dd55d82c69ea0075114ef3780f550e6b4f70",
+  "python_version": "3.13.5",
+  "numpy_version": "2.3.5",
+  "pandas_version": "2.2.3",
+  "elapsed_seconds": 64.31
+}
