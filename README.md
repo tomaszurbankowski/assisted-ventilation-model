@@ -92,3 +92,24 @@ The primary model implementation and primary 180-scenario analysis are retained.
 Limited effort-related variation in EII in the four primary configurations does not
 generalize across the broader sensitivity grid. See Additional file 1 and the
 supplementary README for numerical conventions, source provenance, and interpretation.
+
+## PEEP-inclusive pressure-reference sensitivity
+
+A supplementary analysis added during peer review evaluates the effect of including
+PEEP in the pressure reference used for mechanical-power accounting. Because the
+closed-form equation of Gattinoni et al. assumes constant inspiratory flow and does
+not explicitly represent patient muscle pressure, it is not applied directly to the
+pressure-support breaths. Instead, the original simulated waveforms are retained and
+work is recalculated by direct signed pressure-flow integration with PEEP included in
+the airway-pressure reference.
+
+Run from the repository root:
+
+```bash
+python -m pip install -r supplementary/peep_inclusive/requirements.txt
+python run_R3C1_peep_reference.py
+```
+
+The primary `assisted_ventilation_model_final.py` is unchanged. The analysis and its
+outputs are documented in
+[`supplementary/peep_inclusive/README.md`](supplementary/peep_inclusive/README.md).
