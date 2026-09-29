@@ -1,0 +1,419 @@
+{
+  "analysis": "PEEP-inclusive pressure-reference sensitivity; not direct Gattinoni Eq. (6)",
+  "model_sha256": "f3e8c9347fec674391eb7e128ef5d361f343c576e3efa8651ab4abe81fe9b03b",
+  "model_filename": "assisted_ventilation_model_final.py",
+  "python_version": "3.13.5",
+  "numpy_version": "2.3.5",
+  "pandas_version": "2.2.3",
+  "conversion_cmh2o_l_to_j": 0.0980665,
+  "peep_cmH2O": 5.0,
+  "rr_per_min": 18.0,
+  "Ti_s": 1.0,
+  "integration": "signed trapezoidal integration on original inspiratory mask t < Ti",
+  "pairing": "original non-exclusive i<j ordering; abs(x_j-x_i)/x_i <= 0.05",
+  "passive_duplicates": "retained exactly as in the original 180-scenario grid",
+  "timesteps": {
+    "0.001": {
+      "n_scenarios": 180,
+      "ranges": {
+        "MP_vent_Jmin": [
+          3.079114372454587,
+          87.0716628705356
+        ],
+        "MP_tot_Jmin": [
+          3.079114372454587,
+          130.20932100954556
+        ],
+        "MP_mus_Jmin": [
+          0.0,
+          43.137658139009964
+        ],
+        "HBR": [
+          1.0,
+          4.000603948443337
+        ],
+        "MP_vent_PEEP_Jmin": [
+          6.158228744909174,
+          116.09555049404747
+        ],
+        "MP_tot_PEEP_Jmin": [
+          6.158228744909174,
+          159.23320863305744
+        ],
+        "ratio_PEEP": [
+          1.0,
+          2.5003019742216686
+        ],
+        "ECF_PEEP": [
+          0.0,
+          0.6000483100401124
+        ],
+        "EF1_PEEP": [
+          0.2887847733483835,
+          0.5491731306198628
+        ],
+        "EII_PEEP": [
+          0.06967172836974625,
+          0.4224304533032329
+        ]
+      },
+      "pairs": {
+        "MP_vent_Jmin": {
+          "n_pairs": 505,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 8.832998637797004,
+            "max": 45.24061366419046
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 8.189681219488484,
+            "max": 36.0271229303209
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.041561519574441985,
+            "max": 0.2580091700187521
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.08312303914888386,
+            "max": 0.348767562920195
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.12449387221621656,
+            "max": 0.5647371133587862
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.21470915312391137,
+            "max": 1.3102513429688294
+          }
+        },
+        "MP_tot_Jmin": {
+          "n_pairs": 534,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 2.254543700398102,
+            "max": 8.282383784761734
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 7.2037842142519315,
+            "max": 28.916587721631853
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.07240237501429542,
+            "max": 0.25839529613204965
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.14480475002859058,
+            "max": 0.35158859289920674
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.1441934759952151,
+            "max": 0.6000483100401124
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.24096425941249966,
+            "max": 1.5003019742216686
+          }
+        },
+        "MP_vent_PEEP_Jmin": {
+          "n_pairs": 603,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 8.832998637797004,
+            "max": 37.1329682033206
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 8.45634296085705,
+            "max": 36.0271229303209
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.04176185719480463,
+            "max": 0.2580091700187521
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.0835237143896091,
+            "max": 0.34991391644800585
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.14513662762949825,
+            "max": 0.5647371133587862
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.24096425941249966,
+            "max": 1.3102513429688294
+          }
+        },
+        "MP_tot_PEEP_Jmin": {
+          "n_pairs": 569,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 1.0490768710859868,
+            "max": 5.259230867182808
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 7.113872551312347,
+            "max": 29.952207551781072
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.0735183477648576,
+            "max": 0.25738120146838256
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.1470366955297152,
+            "max": 0.3513535987504378
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.1510273508388879,
+            "max": 0.6000483100401124
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.258153778520833,
+            "max": 1.5003019742216686
+          }
+        }
+      },
+      "ratio_PEEP_max_by_phenotype": {
+        "compliance_dominant": 2.2290131319142814,
+        "mixed": 2.5003019742216686,
+        "resistance_dominant": 2.2974621330954355,
+        "severe_mixed": 2.387805552366273
+      },
+      "max_balance_error_Jmin": 3.019806626980426e-14
+    },
+    "0.0005": {
+      "n_scenarios": 180,
+      "ranges": {
+        "MP_vent_Jmin": [
+          3.0809727752621607,
+          87.09691122337459
+        ],
+        "MP_tot_Jmin": [
+          3.0809727752621607,
+          130.25141525511526
+        ],
+        "MP_mus_Jmin": [
+          0.0,
+          43.1545040317407
+        ],
+        "HBR": [
+          1.0,
+          3.9995563056433396
+        ],
+        "MP_vent_PEEP_Jmin": [
+          6.1619455505243215,
+          116.12921496449945
+        ],
+        "MP_tot_PEEP_Jmin": [
+          6.1619455505243215,
+          159.28371899624014
+        ],
+        "ratio_PEEP": [
+          1.0,
+          2.4997781528216696
+        ],
+        "ECF_PEEP": [
+          0.0,
+          0.599964501301353
+        ],
+        "EF1_PEEP": [
+          0.28879545551745817,
+          0.5492229331264358
+        ],
+        "EII_PEEP": [
+          0.06970666088007026,
+          0.42240908896508356
+        ]
+      },
+      "pairs": {
+        "MP_vent_Jmin": {
+          "n_pairs": 502,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 8.830931986746101,
+            "max": 45.219965718946156
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 8.149788370947615,
+            "max": 36.03724083703433
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.041525447241380714,
+            "max": 0.25798276557343713
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.08305089448276146,
+            "max": 0.34869996212302806
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.12382239310982196,
+            "max": 0.5646842807387676
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.21328256433748605,
+            "max": 1.3097104753273074
+          }
+        },
+        "MP_tot_Jmin": {
+          "n_pairs": 529,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 2.263906965561585,
+            "max": 8.280302590812482
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 7.120369890874823,
+            "max": 28.919977642327822
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.07246795622277141,
+            "max": 0.2584590304950936
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.14493591244554305,
+            "max": 0.3515054602941749
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.14110751721872977,
+            "max": 0.599964501301353
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.24011658734570251,
+            "max": 1.4997781528216696
+          }
+        },
+        "MP_vent_PEEP_Jmin": {
+          "n_pairs": 604,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 8.83318514306076,
+            "max": 37.11330750738095
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 8.459554640874504,
+            "max": 36.03724083703433
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.04182525673072851,
+            "max": 0.2580053749984993
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.08365051346145694,
+            "max": 0.349818713040848
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.14515447503715131,
+            "max": 0.5646842807387676
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.24099351206080688,
+            "max": 1.3097104753273074
+          }
+        },
+        "MP_tot_PEEP_Jmin": {
+          "n_pairs": 569,
+          "abs_delta_MP_tot_PEEP_Jmin": {
+            "min": 0.0,
+            "median": 1.0542546299937499,
+            "max": 5.252737736302564
+          },
+          "abs_delta_MP_mus_Jmin": {
+            "min": 0.0,
+            "median": 7.106530665858884,
+            "max": 29.954297320177268
+          },
+          "abs_delta_EF1_PEEP": {
+            "min": 0.0,
+            "median": 0.0735377701274248,
+            "max": 0.25740101862275844
+          },
+          "abs_delta_EII_PEEP": {
+            "min": 0.0,
+            "median": 0.1470755402548496,
+            "max": 0.35129681402951607
+          },
+          "abs_delta_ECF_PEEP": {
+            "min": 0.0,
+            "median": 0.14953635172480145,
+            "max": 0.599964501301353
+          },
+          "abs_delta_ratio_PEEP": {
+            "min": 0.0,
+            "median": 0.25774032026715266,
+            "max": 1.4997781528216696
+          }
+        }
+      },
+      "ratio_PEEP_max_by_phenotype": {
+        "compliance_dominant": 2.2288006149411306,
+        "mixed": 2.4997781528216696,
+        "resistance_dominant": 2.29718329881835,
+        "severe_mixed": 2.387453136328002
+      },
+      "max_balance_error_Jmin": 3.108624468950438e-14
+    }
+  },
+  "time_step_refinement": {
+    "MP_vent_PEEP_Jmin": {
+      "max_absolute_change": 0.04500881369844478,
+      "max_relative_change_percent_nonzero_baseline": 0.07419237996434283
+    },
+    "MP_tot_PEEP_Jmin": {
+      "max_absolute_change": 0.05051036318269553,
+      "max_relative_change_percent_nonzero_baseline": 0.07419237996434283
+    },
+    "MP_mus_Jmin": {
+      "max_absolute_change": 0.016845892730735557,
+      "max_relative_change_percent_nonzero_baseline": 0.0856345112410363
+    },
+    "ratio_PEEP": {
+      "max_absolute_change": 0.0007017711033003859,
+      "max_relative_change_percent_nonzero_baseline": 0.03569638921313175
+    },
+    "ECF_PEEP": {
+      "max_absolute_change": 0.00018150897127111598,
+      "max_relative_change_percent_nonzero_baseline": 0.03705622196925188
+    },
+    "EF1_PEEP": {
+      "max_absolute_change": 8.012179381744478e-05,
+      "max_relative_change_percent_nonzero_baseline": 0.020241131279371688
+    },
+    "EII_PEEP": {
+      "max_absolute_change": 0.00016024358763506996,
+      "max_relative_change_percent_nonzero_baseline": 0.19453603019957205
+    }
+  }
+}
