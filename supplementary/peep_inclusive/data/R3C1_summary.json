@@ -1,6 +1,6 @@
 {
   "analysis": "PEEP-inclusive pressure-reference sensitivity; not direct Gattinoni Eq. (6)",
-  "model_sha256": "f3e8c9347fec674391eb7e128ef5d361f343c576e3efa8651ab4abe81fe9b03b",
+  "model_sha256": "505c9d2b9ea651c67ba24655fbb8dd55d82c69ea0075114ef3780f550e6b4f70",
   "model_filename": "assisted_ventilation_model_final.py",
   "python_version": "3.13.5",
   "numpy_version": "2.3.5",
