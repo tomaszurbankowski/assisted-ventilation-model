@@ -56,11 +56,11 @@ mv = model.matched_pairs(df, match_variable="MP_vent_Jmin", tolerance=0.05)
 mt = model.matched_pairs(df, match_variable="MP_tot_Jmin", tolerance=0.05)
 
 metrics = [
-    ("delta_MP_tot", "A. Δ total MP", "J/min"),
+    ("delta_MP_tot", "A. Δ total modeled MP", "J/min"),
     ("delta_EII", "B. Δ EII", "Absolute difference"),
     ("delta_REF1", "C. Δ EF₁", "Absolute difference"),
     ("delta_ECF", "D. Δ ECF", "Absolute difference"),
-    ("delta_HBR", "E. Δ HBR", "Absolute difference"),
+    ("delta_HBR", r"E. Δ MP$_{tot}$/MP$_{vent}$", "Absolute difference"),
 ]
 
 fig, axes = plt.subplots(1, 5, figsize=(13.5, 3.6))
@@ -76,7 +76,7 @@ for ax, (metric, title, ylabel) in zip(axes, metrics):
         patch_artist=True,
         widths=0.55,
         showfliers=False,
-        tick_labels=["Vent MP", "Total MP"],
+        tick_labels=["Vent-derived MP", "Total modeled MP"],
         medianprops=dict(color="black", linewidth=1.5),
         boxprops=dict(linewidth=1.0, color=edgecolor),
         whiskerprops=dict(linewidth=1.0, color=edgecolor),
@@ -89,23 +89,10 @@ for ax, (metric, title, ylabel) in zip(axes, metrics):
 
     ax.set_title(title, pad=8)
     ax.set_ylabel(ylabel)
-    ax.tick_params(axis="x", rotation=0)
+    ax.tick_params(axis="x", rotation=20)
     ax.grid(axis="y", alpha=0.15, linewidth=0.5)
     ax.set_ylim(bottom=0)
 
-    ax.text(
-        0.5, 0.92,
-        f"n={len(mv)} vs n={len(mt)}",
-        transform=ax.transAxes,
-        ha="center",
-        va="center",
-        fontsize=7,
-        bbox=dict(
-            boxstyle="round,pad=0.15",
-            facecolor="white",
-            edgecolor="0.8"
-        )
-    )
 
 fig.tight_layout(w_pad=0.8)
 save_figure(fig, "Figure5_matched_pair_summary")
