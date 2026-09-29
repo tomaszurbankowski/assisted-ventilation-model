@@ -66,10 +66,16 @@ phenotype_titles = {
 }
 
 metrics = [
-    ("MP_tot_Jmin", "MPtot (J/min)"),
+    ("MP_tot_Jmin", r"MP$_{tot}$ (J/min)"),
     ("EII", "EII"),
-    ("HBR", "HBR"),
+    ("HBR", r"MP$_{tot}$/MP$_{vent}$"),
 ]
+
+colorbar_labels = {
+    "MP_tot_Jmin": r"MP$_{tot}$ (J/min)",
+    "EII": "EII (dimensionless)",
+    "HBR": r"MP$_{tot}$/MP$_{vent}$ (dimensionless)",
+}
 
 pressure_support_levels = [5.0, 10.0, 15.0]
 pmus_levels = [12.0, 9.0, 6.0, 3.0, 0.0]   # descending for display
@@ -179,6 +185,7 @@ for r, (metric, row_label) in enumerate(metrics):
         pad=0.02,
     )
     cbar.ax.tick_params(labelsize=8)
+    cbar.set_label(colorbar_labels[metric], fontsize=9, labelpad=8)
     cbar.outline.set_linewidth(0.8)
 
 
