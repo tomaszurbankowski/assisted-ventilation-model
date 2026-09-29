@@ -21,6 +21,10 @@ spec.loader.exec_module(model)
 
 df = model.run_parameter_sweep()
 
+# A single colorbar requires the same ECF normalization in every panel.
+ecf_min = float(df["ECF"].min())
+ecf_max = float(df["ECF"].max())
+
 phenotypes = [
     "compliance_dominant",
     "resistance_dominant",
@@ -55,6 +59,8 @@ for ax, phenotype in zip(axes.flat, phenotypes):
         sub["MP_vent_Jmin"],
         sub["MP_tot_Jmin"],
         c=sub["ECF"],
+        vmin=ecf_min,
+        vmax=ecf_max,
         s=52,
         alpha=0.90,
         edgecolors="none"
@@ -76,7 +82,8 @@ for ax, phenotype in zip(axes.flat, phenotypes):
     ax.text(
         0.03,
         0.97,
-        f"HBR: {sub['HBR'].min():.2f}–{sub['HBR'].max():.2f}",
+        r"MP$_{tot}$/MP$_{vent}$: "
+        + f"{sub['HBR'].min():.2f}–{sub['HBR'].max():.2f}",
         transform=ax.transAxes,
         ha="left",
         va="top",
@@ -90,25 +97,21 @@ for ax, phenotype in zip(axes.flat, phenotypes):
     )
 
 for ax in axes[1, :]:
-    ax.set_xlabel("Ventilator mechanical power (J/min)")
+    ax.set_xlabel("Ventilator-derived mechanical power (J/min)")
 for ax in axes[:, 0]:
-    ax.set_ylabel("Total mechanical power (J/min)")
+    ax.set_ylabel("Total modeled mechanical power (J/min)")
 
-cbar = fig.colorbar(
-    sc,
-    ax=axes.ravel().tolist(),
-    fraction=0.028,
-    pad=0.025
-)
-cbar.set_label("ECF (effort / total power)")
-
+# Reserve a separate right-hand strip; the colorbar must not overlap a panel.
 fig.subplots_adjust(
     left=0.10,
-    right=0.88,
+    right=0.86,
     bottom=0.10,
     top=0.93,
     wspace=0.22,
     hspace=0.28
 )
+colorbar_ax = fig.add_axes([0.895, 0.21, 0.025, 0.59])
+cbar = fig.colorbar(sc, cax=colorbar_ax)
+cbar.set_label("ECF (dimensionless)")
 
 save_figure(fig, "Figure4_hidden_burden_scatter")
