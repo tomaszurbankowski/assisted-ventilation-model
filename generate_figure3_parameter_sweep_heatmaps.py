@@ -66,9 +66,9 @@ phenotype_titles = {
 }
 
 metrics = [
-    ("MP_tot_Jmin", r"MP$_{tot}$ (J/min)"),
-    ("EII", "EII"),
+    ("MP_tot_Jmin", r"MP$_{tot}$"),
     ("HBR", r"MP$_{tot}$/MP$_{vent}$"),
+    ("EII", "EII"),
 ]
 
 colorbar_labels = {
@@ -132,7 +132,7 @@ fig.subplots_adjust(
     hspace=0.18,
 )
 
-for r, (metric, row_label) in enumerate(metrics):
+for r, (metric, _row_label) in enumerate(metrics):
     vmin, vmax = row_limits[metric]
     last_im = None
 
@@ -166,7 +166,7 @@ for r, (metric, row_label) in enumerate(metrics):
         ax.set_yticks(range(len(pmus_levels)))
         ax.set_yticklabels([f"{y:.0f}" for y in pmus_levels])
         if c == 0:
-            ax.set_ylabel(f"{row_label}\nPmus peak (cmH₂O)")
+            ax.set_ylabel("Pmus peak (cmH₂O)")
         else:
             ax.set_ylabel("")
 
